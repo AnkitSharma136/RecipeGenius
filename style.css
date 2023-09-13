@@ -49,9 +49,59 @@ form button [type="submit"]{
 	cursor: pointer;
 }
 
+/*main section*/
 .recipe-container{
 	text-align : centre;
 	margin-top : 20px;
+	display :grid;
+	grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+	grid-gap: 40px;
+	width:80%;
+	margin: 10px auto;
+	padding : 20px;
+	place-items: center;
+}
+
+.recipe{
+	background-color: bisque;
+	display: flex;
+	flex-direction : column;
+	color :brown;
+	border-radius: 6px;
+	cursor : pointer ;
+	max-width: 350px;
+}
+
+.recipe img{
+	height: 300px;
+}
+
+.recipe h3 {
+	font-size : 24px;
+}
+
+recipe p {
+	font-size: 20px;
+	margin : 5px 0;
+	color :blueviolet;
+}
+
+.recipe-close-button{
+	background-color: antiquewhite;
+	border: none;
+	color: black;
+	font-size: 20px;
+}
+
+.recipe button{
+	font-size: 20px;
+	font-weight: 600;
+	padding: 10px;
+	border-radius: 5px;
+	cursor :pointer;
+	margin : 18px auto;
+	background-color:azure;
+	color: rgb(48, 30, 30);
 }
 
 @media screen and  (max-width : 600px){
