@@ -18,7 +18,7 @@ const fetchRecipes = async (query) => {
         <img src="${meal.strMealThumb}">
         <h3>${meal.strMeal}</h3>
         <p>${meal.strArea} Dish </p>
-        <p>${meal.strCategory}<p>
+        <p>${meal.strCategory}</p>
         `
         const button = document.createElement('button');
         button.textContent ="View Recipe";
@@ -29,9 +29,43 @@ const fetchRecipes = async (query) => {
         });
 
         recipeContainer.appendChild(recipeDiv);
-    })
-};
+    });
+}
 
+const fetchIngredients =(meal) => {
+    let ingredientList ="";
+
+    for(let i=1; i<=20 ;i++){
+        const ingredient =meal[`strIngredient${i}`];
+        if(ingredient){
+            const measure =meal[`strMeasure${i}`];
+            ingredientList += `<li>${measure} ${ingredient}</li>`;
+        }
+
+        else{
+            break;
+        }
+    }
+
+    return ingredientList;
+}
+
+const openRecipePopup =(meal) => {
+    recipeDetailsContent.innerHTML = `
+    <h2> ${meal.strMeal} </h2>
+    <h3> Ingredients :</h3>
+    <ul class="ingredient-list"> ${fetchIngredients(meal)}</ul>
+    <div>
+        <h3>Instructions</h3>
+        <p class="recipe-instructuons"> ${meal.strInstructions}</p>
+    </div>
+    `
+    recipeDetailsContent.parentElement.style.display ="block";
+}
+
+recipeCloseButton.addEventListener('click',() => {
+    recipeDetailsContent.parentElement.style.display ="none";
+});
 
 searchButton.addEventListener('click' , (e) =>{
     e.preventDefault();

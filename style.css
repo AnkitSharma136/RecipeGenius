@@ -89,7 +89,7 @@ recipe p {
 .recipe-close-button{
 	background-color: antiquewhite;
 	border: none;
-	color: black;
+	color: brown;
 	font-size: 20px;
 }
 
@@ -102,6 +102,15 @@ recipe p {
 	margin : 18px auto;
 	background-color:azure;
 	color: rgb(48, 30, 30);
+}
+
+.recipe-details{
+	display: none;
+	position : fixed;
+	top: 50%;
+	left: 50%;
+	transform : translate(-50%,-50%);
+	background-color: aquamarine;
 }
 
 @media screen and  (max-width : 600px){
