@@ -6,12 +6,13 @@ const recipeCloseButton =document.querySelector('.recipe-close-button');
 
 const fetchRecipes = async (query) => {
     recipeContainer.innerHTML ="<h2>Fecting recipe ....</h2>";
-    const data = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`);
-    const response = await data.json();
+    try {
+        const data = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`);
+        const response = await data.json();
 
-    //console.log(response);
-    recipeContainer.innerHTML="";
-    response.meals.forEach(meal =>{
+        //console.log(response);
+        recipeContainer.innerHTML="";
+        response.meals.forEach(meal =>{
         const recipeDiv = document.createElement('div');
         recipeDiv.classList.add('recipe');
         recipeDiv.innerHTML = `
@@ -29,7 +30,11 @@ const fetchRecipes = async (query) => {
         });
 
         recipeContainer.appendChild(recipeDiv);
-    });
+        });
+    }
+    catch (error) {
+        recipeContainer.innerHTML = "<h2> Error in Fetching Recipes </h2";
+    }
 }
 
 const fetchIngredients =(meal) => {
